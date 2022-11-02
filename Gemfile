@@ -48,3 +48,6 @@ group :development do
   # gem "spring"
 end
 
+grou :production do
+  gem 'pg'
+end
