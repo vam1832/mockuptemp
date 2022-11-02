@@ -10,7 +10,8 @@ class Api::V1::AccountsController < ApplicationController
                     "nombres" => params[:accountData].first["nombres"],
                     "apellido_paterno" => params[:accountData].first["apellido_paterno"],
                     "apellido_materno" => params[:accountData].first["apellido_materno"],
-                    "birthdate" => params[:accountData].first["birthdate"]
+                    "birthdate" => params[:accountData].first["birthdate"],
+                    "status" => "Validacion Completada",
                 }
             if !@account.nil? and @account.update(new_account_data)
                 render json: {Error: "OK", message: "datos actualizados correctamente", account_data: [@account.as_json(:except => [:id, :created_at, :updated_at])]}
