@@ -6,14 +6,14 @@ class Api::V1::AccountsController < ApplicationController
             @account = Account.where("accountid = '#{params[:accountId]}'").first
             new_account_data = 
                 {
-                    "dni" => params[:accountData].first["dni"],
-                    "nombres" => params[:accountData].first["nombres"],
-                    "apellido_paterno" => params[:accountData].first["apellido_paterno"],
-                    "apellido_materno" => params[:accountData].first["apellido_materno"],
-                    "birthdate" => params[:accountData].first["birthdate"],
+                    "dni" => params[:accountDataReniec].first["dni"],
+                    "nombres" => params[:accountDataReniec].first["nombres"],
+                    "apellido_paterno" => params[:accountDataReniec].first["apellido_paterno"],
+                    "apellido_materno" => params[:accountDataReniec].first["apellido_materno"],
+                    "birthdate" => params[:accountDataReniec].first["birthdate"],
                     "status" => "Validacion Completada",
                 }
-            if !@account.nil? and @account.update(new_account_data)
+            if !@account.nil? and @account and @account.update(new_account_data)
                 render json: {Error: "OK", message: "datos actualizados correctamente", account_data: [@account.as_json(:except => [:id, :created_at, :updated_at])]}
             elsif @account.nil?
                 render json: {Error: "400", messageError: "complete los campos correctamente"}
