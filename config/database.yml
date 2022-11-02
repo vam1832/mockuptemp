@@ -83,4 +83,4 @@ production:
   <<: *default
   database: nttdata_mockup_updateFields_production
   username: nttdata_mockup_updateFields
-  password: <%= ENV["NTTDATA_MOCKUP_UPDATEFIELDS_DATABASE_PASSWORD"] %>
+  password: ''
